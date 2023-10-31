@@ -12,10 +12,12 @@ const getFromLocalStorage = () => {
 };
 
 export const ThemeContextProvider = ({ children }) => {
+  // to persist through reloads/refresh
   const [theme, setTheme] = useState(() => {
     return getFromLocalStorage();
   });
 
+  //toggle button logic
   const toggle = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
