@@ -97,12 +97,14 @@ const WritePage = () => {
 
   return (
     <div className={styles.container}>
+      
       <input
         type="text"
         placeholder="Title"
         className={styles.input}
         onChange={(e) => setTitle(e.target.value)}
       />
+
       <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)}>
         <option value="style">style</option>
         <option value="fashion">fashion</option>
@@ -111,6 +113,7 @@ const WritePage = () => {
         <option value="travel">travel</option>
         <option value="coding">coding</option>
       </select>
+
       <div className={styles.editor}>
         <button className={styles.button} onClick={() => setOpen(!open)}>
           <Image src="/plus.png" alt="" width={16} height={16} />
@@ -136,6 +139,7 @@ const WritePage = () => {
             </button>
           </div>
         )}
+
         <ReactQuill
           className={styles.textArea}
           theme="bubble"
@@ -143,10 +147,15 @@ const WritePage = () => {
           onChange={setValue}
           placeholder="Tell your story..."
         />
+        
       </div>
+
+
       <button className={styles.publish} onClick={handleSubmit}>
         Publish
       </button>
+
+
     </div>
   );
 };
