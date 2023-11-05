@@ -29,6 +29,7 @@ const WritePage = () => {
   useEffect(() => {
     const storage = getStorage(app);
     const upload = () => {
+      //to get a unique name
       const name = new Date().getTime() + file.name;
       const storageRef = ref(storage, name);
 

@@ -48,10 +48,12 @@ const SinglePage = async ({ params }) => {
       
       <div className={styles.content}>
         <div className={styles.post}>
+          {/* post content  */}
           <div
             className={styles.description}
             dangerouslySetInnerHTML={{ __html: data?.desc }}
           />
+          {/* post comment  */}
           <div className={styles.comment}>
             <Comments postSlug={slug}/>
           </div>
