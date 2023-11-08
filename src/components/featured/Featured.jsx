@@ -10,17 +10,14 @@ const Featured = () => {
       </h1>
       <div className={styles.post}>
         <div className={styles.imgContainer}>
-          <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+          <Image src="/pexel.jpg" alt="" fill className={styles.image} />
         </div>
         <div className={styles.textContainer}>
-          <h1 className={styles.postTitle}>Lorem ipsum dolor sit amet alim consectetur adipisicing elit.</h1>
+          <h1 className={styles.postTitle}>“Blogging is a communications mechanism handed to us by the long tail of the Internet.”</h1>
           <p className={styles.postDesc}>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Cupiditate, quam nisi magni ea laborum inventore voluptatum
-            laudantium repellat ducimus unde aspernatur fuga. Quo, accusantium
-            quisquam! Harum unde sit culpa debitis.
+          In the last decade, blogging has turned the publishing world on its head. A blog allows you to write and publish anything, from anywhere, and have it be immediately available to billions of people all around the world.
           </p>
-          <button className={styles.button}>Read More</button>
+          {/* <button className={styles.button}>Read More</button> */}
         </div>
       </div>
     </div>

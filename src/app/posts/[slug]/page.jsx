@@ -34,7 +34,7 @@ const SinglePage = async ({ params }) => {
             )}
             <div className={styles.userTextContainer}>
               <span className={styles.username}>{data?.user.name}</span>
-              <span className={styles.date}>01.01.2024</span>
+              <span className={styles.date}>{data.createdAt.substring(0, 10)}</span>
             </div>
           </div>
         </div>
@@ -49,10 +49,12 @@ const SinglePage = async ({ params }) => {
       <div className={styles.content}>
         <div className={styles.post}>
           {/* post content  */}
-          <div
-            className={styles.description}
-            dangerouslySetInnerHTML={{ __html: data?.desc }}
-          />
+          {typeof data?.desc === 'string' &&
+            <div
+              className={styles.description}
+              dangerouslySetInnerHTML={{ __html: data?.desc }}
+            />
+          }
           {/* post comment  */}
           <div className={styles.comment}>
             <Comments postSlug={slug}/>

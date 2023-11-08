@@ -25,19 +25,22 @@ const WritePage = () => {
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const storage = getStorage(app);
     const upload = () => {
       //to get a unique name
+      setLoading(true);
       const name = new Date().getTime() + file.name;
       const storageRef = ref(storage, name);
-
+      // {loading && <div className={styles.loading}>Loading...</div>};
       const uploadTask = uploadBytesResumable(storageRef, file);
 
       uploadTask.on(
         "state_changed",
         (snapshot) => {
+        
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log("Upload is " + progress + "% done");
@@ -53,6 +56,8 @@ const WritePage = () => {
         (error) => {},
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            // setMedia(downloadURL);
+            setLoading(false);
             setMedia(downloadURL);
           });
         }
@@ -62,9 +67,13 @@ const WritePage = () => {
     file && upload();
   }, [file]);
 
-  if (status === "loading") {
-    return <div className={styles.loading}>Loading...</div>;
-  }
+  // useEffect(() => {
+    
+  // }, [loading])
+  
+  // if (loading) {
+  //   return <div className={styles.loading}>Loading...</div>;
+  // }
 
   if (status === "unauthenticated") {
     router.push("/");
@@ -117,18 +126,20 @@ const WritePage = () => {
 
       <div className={styles.editor}>
         <button className={styles.button} onClick={() => setOpen(!open)}>
-          <Image src="/plus.png" alt="" width={16} height={16} />
+          <Image src="/plus2.png" alt="" width={16} height={16} />
+          {/* <h4>click to add image</h4> */}
         </button>
+        <h4 className={styles.addImageText}>click to add image</h4>
         {open && (
           <div className={styles.add}>
             <input
               type="file"
               id="image"
               onChange={(e) => setFile(e.target.files[0])}
-              style={{ display: "none" }}
+              // style={{ display: "none" }}
             />
             <button className={styles.addButton}>
-              <label htmlFor="image">
+              <label htmlFor="image" >
                 <Image src="/image.png" alt="" width={16} height={16} />
               </label>
             </button>

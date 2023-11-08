@@ -3,16 +3,33 @@ import styles from "./categoryList.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
+// const getData = async () => {
+//   const res = await fetch("http://localhost:3000/api/categories", {
+//     cache: "no-store",
+//   });
+
+//   if (!res.ok) {
+//     throw new Error("Failed");
+//   }
+
+//   return res.json();
+// };
 const getData = async () => {
-  const res = await fetch("http://localhost:3000/api/categories", {
-    cache: "no-store",
-  });
+  try {
+    const res = await fetch("http://localhost:3000/api/categories", {
+      cache: "no-store",
+    });
 
-  if (!res.ok) {
-    throw new Error("Failed");
+    if (!res.ok) {
+      throw new Error("Failed");
+    }
+
+    return res.json();
+  } catch (error) {
+    // Handle the error here, e.g., log it or return an error response
+    console.error("Error:", error);
+    return { error: "An error occurred while fetching data." };
   }
-
-  return res.json();
 };
 
 const CategoryList = async () => {
@@ -21,9 +38,9 @@ const CategoryList = async () => {
     <div className={styles.container}>
       <h1 className={styles.title}>Popular Categories</h1>
       <div className={styles.categories}>
-        {data?.map((item) => (
+        {data && data?.map((item) => (
           <Link
-            href="/blog?cat=style"
+            href={`/blog?cat=${item.slug}`}
             className={`${styles.category} ${styles[item.slug]}`}
             key={item._id}
           >
@@ -40,6 +57,73 @@ const CategoryList = async () => {
           </Link>
         ))}
       </div>
+        {/* <div className={styles.categories}>
+          <Link href="/blog?cat=style" 
+          className={`${styles.category} ${styles.style}`}>
+             <Image src="/style.png"
+              alt=""
+              height={32}
+              width={32}
+              className={styles.image}
+              /> 
+              Style
+          </Link>
+          
+          <Link href={`/blog`} 
+          className={`${styles.category} ${styles.fashion}`}>
+             <Image src="/fashion.png"
+              alt=""
+              height={32}
+              width={32}
+              className={styles.image}
+              />
+              Fashion
+          </Link>
+
+          <Link href={`/blog`} 
+          className={`${styles.category} ${styles.food}`}>
+             <Image src="/food.png"
+              alt=""
+              height={32}
+              width={32}
+              className={styles.image}
+              />
+              Food
+          </Link>
+
+          <Link href={`/blog`} 
+          className={`${styles.category} ${styles.travel}`}>
+             <Image src="/travel.png"
+              alt=""
+              height={32}
+              width={32}
+              className={styles.image}
+              />
+              Travel
+          </Link>
+
+          <Link href={`/blog`} 
+          className={`${styles.category} ${styles.culture}`}>
+             <Image src="/culture.png"
+              alt=""
+              height={32}
+              width={32}
+              className={styles.image}
+              />
+              Culture
+          </Link>
+
+          <Link href={`/blog`} 
+          className={`${styles.category} ${styles.coding}`}>
+             <Image src="/coding.png"
+              alt=""
+              height={32}
+              width={32}
+              className={styles.image}
+              />
+              Coding
+          </Link>
+        </div> */}
     </div>
   );
 };

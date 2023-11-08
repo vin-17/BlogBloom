@@ -4,6 +4,7 @@
   flex-direction: column;
 }
 
+
 .select{
   margin-bottom: 50px;
   padding: 10px 20px;
@@ -59,6 +60,7 @@
 }
 
 .textArea {
+  margin-top: 50px;
   width: 100%;
 }
 
@@ -72,4 +74,31 @@
   color: white;
   cursor: pointer;
   border-radius: 20px;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading::after {
+  content: "";
+  border: 6px solid #f3f3f3; /* Light gray border */
+  border-top: 6px solid #3498db; /* Blue border - adjust the color as needed */
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.addImageText {
+  font-size: 12px;
+  justify-content: center;
 }

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import styles from "./menuPosts.module.css"
+import styles from "./popularMenuPosts.module.css"
 
 const MenuPosts = ({ withImage }) => {
   return (
@@ -15,7 +15,7 @@ const MenuPosts = ({ withImage }) => {
         <div className={styles.textContainer}>
           <span className={`${styles.category} ${styles.travel}`}>Travel</span>
           <h3 className={styles.postTitle}>
-          This section is still in progress...
+            This section is still in progress...
           </h3>
           <div className={styles.detail}>
             <span className={styles.username}>John Doe</span>
