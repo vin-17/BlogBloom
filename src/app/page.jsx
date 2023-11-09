@@ -1,4 +1,4 @@
-import Link from "next/link";
+// import Link from "next/link";
 import styles from "./homepage.module.css";
 // import { useRouter } from "next/navigation";
 import Featured from "@/components/featured/Featured";
