@@ -13,10 +13,11 @@ import Image from "next/image";
 //   }
 
 //   return res.json();
+// ${process.env.NEXTAUTH_URL}
 // };
 const getData = async () => {
   try {
-    const res = await fetch(`${process.env.NEXTAUTH_URL}/api/categories`, {
+    const res = await fetch(`/api/categories`, {
       cache: "no-store",
     });
 
