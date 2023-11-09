@@ -20,7 +20,7 @@ const getData = async () => {
     // const res = await fetch(`/api/categories`, {
     //   cache: "no-store",
     // });
-    const res = await import(`/api/categories`);
+    const res = await import(`../api/categories`);
     // await (await res.handler()).json() 
     if (!res.ok) {
       throw new Error("Failed");
