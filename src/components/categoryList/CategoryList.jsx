@@ -17,16 +17,16 @@ import Image from "next/image";
 // };
 const getData = async () => {
   try {
-    // const res = await fetch(`/api/categories`, {
-    //   cache: "no-store",
-    // });
-    const res = await import(`../api/categories`);
-    // await (await res.handler()).json() 
+    const res = await fetch(`/api/categories`, {
+      cache: "no-store",
+    });
+    // const res = await import(`../api/categories`);
+    
     if (!res.ok) {
       throw new Error("Failed");
     }
 
-    await (await res.handler()).json() 
+    // await (await res.handler()).json() 
     return res.json();
   } catch (error) {
     // Handle the error here, e.g., log it or return an error response
