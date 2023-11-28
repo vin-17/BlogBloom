@@ -16,8 +16,12 @@ import Image from "next/image";
 // ${process.env.NEXTAUTH_URL}
 // };
 const getData = async () => {
+
+  const apiUrl = typeof window === 'undefined' ? `${process.env.NEXTAUTH_URL}/api/categories` : '/api/categories';
+
+
   try {
-    const res = await fetch(`${process.env.NEXTAUTH_URL}/app/api/categories`, {
+    const res = await fetch(apiUrl, {
       method : 'GET',
       cache: "no-store",
     });
