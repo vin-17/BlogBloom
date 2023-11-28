@@ -17,7 +17,8 @@ import Image from "next/image";
 // };
 const getData = async () => {
   try {
-    const res = await fetch(`/api/categories`, {
+    const res = await fetch(`${process.env.NEXTAUTH_URL}/app/api/categories`, {
+      method : 'GET',
       cache: "no-store",
     });
     // const res = await import(`../api/categories`);
