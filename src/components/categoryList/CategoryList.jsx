@@ -18,7 +18,7 @@ import Image from "next/image";
 const getData = async () => {
 
   const apiUrl = typeof window === 'undefined' ? `${process.env.NEXTAUTH_URL}/api/categories` : '/api/categories';
-
+  // console.log('API URL:', apiUrl);
 
   try {
     const res = await fetch(apiUrl, {
